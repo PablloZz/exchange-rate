@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
+import Conversion from "./components/Conversion";
+import Header from "./components/Header";
 
 function App() {
+  const [currencies, setCurrencies] = useState([]) 
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11")
+      const data = await res.json()
+      setCurrencies(data)
+    }
+
+    fetchData().catch(err => console.log(err))
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header currencies={currencies} />
+      <Conversion />
     </div>
   );
 }
