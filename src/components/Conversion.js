@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 function Conversion({
   currencies,
@@ -8,8 +8,8 @@ function Conversion({
   onChangeAmount
 }) {
   return (
-    <div>
-      <input type='number' value={amount} onChange={onChangeAmount} />
+    <div className="input-container">
+      <input type="number" value={amount} onChange={onChangeAmount} />
       <select value={selectedCurrency} onChange={onSelectChange}>
         {currencies.map(currencie => (
           <option key={currencie} value={currencie}>

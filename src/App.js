@@ -117,23 +117,24 @@ function App() {
   }
 
   return (
-    <div className='container'>
+    <div className="container">
       <Header currencies={headerCurrencies} />
-      <Conversion
-        currencies={currencies}
-        selectedCurrency={currencyFrom}
-        onSelectChange={handleSelectFromChange}
-        amount={fromAmount}
-        onChangeAmount={handleFromAmountChange}
-      />
-      <p>⤋</p>
-      <Conversion
-        currencies={currencies}
-        selectedCurrency={currencyTo}
-        onSelectChange={handleSelectToChange}
-        amount={toAmount}
-        onChangeAmount={handleToAmountChange}
-      />
+      <div className="container flex">
+        <Conversion
+          currencies={currencies}
+          selectedCurrency={currencyFrom}
+          onSelectChange={handleSelectFromChange}
+          amount={fromAmount}
+          onChangeAmount={handleFromAmountChange}
+        />
+        <Conversion
+          currencies={currencies}
+          selectedCurrency={currencyTo}
+          onSelectChange={handleSelectToChange}
+          amount={toAmount}
+          onChangeAmount={handleToAmountChange}
+        />
+      </div>
     </div>
   )
 }
